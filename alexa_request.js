@@ -27,7 +27,7 @@ nochrechtzeitig = setTimeout(function () {
 
 //trigger auf summery
 //überprüfen ob in der Zeit 
-//inhalt Prüfen
+//Inhalt prüfen
 //aktion
 
 on({ id: was_klaudia_hoert_ID, change: "ne" }, function (obj) {
