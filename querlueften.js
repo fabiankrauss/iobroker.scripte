@@ -13,18 +13,20 @@ on({ id: fenster_sensor_ID, change: "ne" }, ({ state, oldState }) => {
   const value = state.val;
   const oldValue = oldState.val;
 
-  if (!!value && compareTime("6:00", "22:00", "between") == true && getState(regenstatus_text_ID).val == "--") {
-    klaudia_frage()
-  }
-
   if (!value) {
     setState(dachfenster_Steuerung, 0);
 
-    if (!durchzug_aktiv) {
-      durchzug_aktiv = false;
+    if (durchzug_aktiv) {
+      timer_loeschen();
     }
 
-    timer_loeschen();
+    durchzug_aktiv = false;
+    return;
+  }
+
+  if (!!value && compareTime("6:00", "22:00", "between") && getState(regenstatus_text_ID).val == "--") {
+    klaudia_frage()
+    return
   }
 });
 

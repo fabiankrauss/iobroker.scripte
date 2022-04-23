@@ -12,9 +12,11 @@ setState(klaudia_soll_sprechen_ID, "hallo hier ist wieder die Dose! Soll ich wei
 antwort_im_Zeitrahmen = true;
 
 (() => {
-  if (nochrechtzeitig) {
-    clearTimeout(nochrechtzeitig); nochrechtzeitig = null;
+  if (!nochrechtzeitig) {
+    return
   }
+  
+  clearTimeout(nochrechtzeitig); nochrechtzeitig = null;
 })();
 
 nochrechtzeitig = setTimeout(() => {
